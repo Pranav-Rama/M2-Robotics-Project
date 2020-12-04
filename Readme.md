@@ -27,11 +27,11 @@ Students: <br>
 ## Table of Content 
 
 - [Introduction](#introduction)
-- [Project Implementation ](#Project-Implementation)
--0- * [How to control the robot with /cmd_vel](#How-to-control-the-robot-with-/cmd_vel)
--0- * [How to create a mapping program launches to map the environment](#How-to-create-a-mapping-program-launches-to-map-the-environment)
--0- * [How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm](#How-to-set-a-move-base-system-for-creating-a-goal-to-move_base-and-implement-the-obstacles-avoiding-algorithm)
--0- * [How to create a navigation program with a set of waypoints using Rviz](#How-to-create-a-navigation-program-with-a-set-of-waypoints-using-Rviz)
+- [Project Implementation ](#Project-Implementation)<br>
+  - [How to control the robot with /cmd_vel](#How-to-control-the-robot-with-/cmd_vel)
+  - [How to create a mapping program launches to map the environment](#How-to-create-a-mapping-program-launches-to-map-the-environment)
+  - [How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm](#How-to-set-a-move-base-system-for-creating-a-goal-to-move_base-and-implement-the-obstacles-avoiding-algorithm)
+  - [How to create a navigation program with a set of waypoints using Rviz](#How-to-create-a-navigation-program-with-a-set-of-waypoints-using-Rviz)
 - [Conclusion](#Conclusion)
 - [References](#References)
 
