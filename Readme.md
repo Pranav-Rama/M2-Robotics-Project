@@ -66,6 +66,10 @@ _Objective_: Set up the move base system so that you can publish a goal to move_
 ## How to create a navigation program with a set of waypoints using Rviz<br>
 _Objective_: Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the next page.<br>
 To launch the navigation file:   
+<br>
+__Execution__: The next task is to create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the below figures. 
+
+
 
     roslaunch t3_navigation start_navigation.launch
  <br>
