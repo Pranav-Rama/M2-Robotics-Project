@@ -67,10 +67,35 @@ _Objective_: Set up the move base system so that you can publish a goal to move_
 _Objective_: Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the next page.<br>
 To launch the navigation file:   
 <br>
-__Execution__: The next task is to create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the below figures. 
+_Execution_: The next task is to create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the below figures. 
+<p align="center">
+  <img src = "Resources/Images/w1.png">
+</p>
+<p align="center">
+  <img src = "Resources/Images/w2.png">
+</p>
+<p align="center">
+  <img src = "Resources/Images/w3.png">
+</p>
+<br>
+<p align="justify"> In here we got three figures which are the three different waypoints that need to be achieved. In order to develop a ROS program that allows the robot to navigate to those locations, we first need to know what are the (x,y) coordinates of these waypoints onto the map. Then, we will use the coordinate to define the navigation mission that we submit to the robot’s navigation stack to execute it. Remember that any robot on ROS  runs the move_base navigation stack which allows the robot to find a path towards a goal and execute the path following while avoiding obstacles. The setup of the terminal, gazebo and RViz should follow as below for easiness of getting the coordinates.</p>
+<p align="center">
+  <img src = "Resources/Images/amcl.png">
+</p>
 
+<p align="justify"> The first step is to open the map which we have been mapping. By using the RViz to visualize the map, we use the 2D Pose estimate to get the waypoint coordinates. After all, it has been set up as below, open another terminal and write rostopic echo /amcl_pose to get the location of the robot on the map. While not closing the terminal, go back to RViz the click on 2D Pose Estimate button, then click to one of the waypoints on the map. Go back to the terminal where the command of rostopic echo /amcl_pose been running, and you will find the coordinate of the point selected.</p>
 
+The second step is to find the location of interest. As an example, the (x,y) coordinates of the three waypoints should look like these values:
 
+- Waypoint1(27.70, 12.50) /example value
+- Waypoint2(30.44, 14.50) /example value
+- Waypoint3(35.20, 12.50) /example value
+
+<br>
+<p align="justify">The final step is to write the navigation program. The navigation program will be written in Python languages which will use the rospy, actionlib and others ROS or turtlebot library. In the program code, we will include the coordinates of the waypoints and will let the user choose either to go to the waypoint 1, 2 or 3. Besides that, it can autonomously navigate through the whole 3 waypoints. The figure below shows the flowchart of the navigation program for turtlebot to reach all of the waypoints. The points set in the flowchart are as an example of the program flow.</p>
+
+To launch the navigation
+    
     roslaunch t3_navigation start_navigation.launch
  <br>
 To launch the autonomous navigation to waypoints:
