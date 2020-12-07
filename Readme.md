@@ -63,6 +63,12 @@ _Objective_: Create mapping launches, and map the whole environment. You have to
 _Objective_: Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.<br>
 <!--Put Your content-->
 
+__Demonstration__ of Task 3:<br>
+<p align="center">
+<img src="Resources/Videos/task3_gif.gif"/></p> <br>
+Please click this link to download the full [video](https://github.com/IOJVision/M2-Robotics-Project/blob/main/Resources/Videos/task3_video.mp4)
+
+
 ## How to create a navigation program with a set of waypoints using Rviz<br>
 _Objective_: Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the next page.<br>
 To launch the navigation file:   
@@ -101,6 +107,11 @@ To launch the navigation
 To launch the autonomous navigation to waypoints:
 
     roslaunch t3_waypoint autonomous_navigation.launch
+    
+__Demonstration__ of Task 4:<br>
+<p align="center">
+<img src="Resources/Videos/task4_gif.gif"/></p> <br>
+Please click this link to download the full [video](https://github.com/IOJVision/M2-Robotics-Project/blob/main/Resources/Videos/task4_video.mp4)
 
 ## Conclusion
 <p align="justify">As conclusions, here we are trying to explain from top to bottom on how to handle the turtlebot 3 model burger. We start with the Introduction of the turtlebot 3. Then we continue to explain in detail for the Project Implementation that is started with the creation of a script that moves the robot around with simple /cmd_vel publishing. See the range of movement of this new robot model. Next details on how to create the mapping launches, and map the whole environment. Then, set up the move base system so that it can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles. Lastly, create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. For now, the implementation of task 4 is successfully going and the next plan was to create an autonomous script to go to three of the waypoints. We believe the approach that we demonstrated above is able to be implemented for project development success. </p> <br>
