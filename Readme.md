@@ -43,7 +43,7 @@ Students: <br>
 - Create a script that moves the robot around with simple /cmd_vel publishing. See the range of movement of this new robot model.
 - Create mapping launches, and map the whole environment. You have to finish with a clean map of the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot.
 - Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.
-- Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the next page.
+- Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. 
 
 <p align="justify">This objective will help us to understand more about using and implementation of our knowledge on the ground-based robot. We will use the constructsim platform which is similar to a virtual environment. This simulation offers us a very good user interface and is user friendly. The main thing that was necessary for the success of this project was understanding the ROS based system, using the right tool for the visualisation of the mapping and the right packages to be used to drive the robot and navigate. Besides that, we will be using RViz for visualization, Gazebo to simulate the virtual world, rqt_graph for the visualizing the ROS computation graph and mainly using a python programming language for the scripts.</p> 
 
