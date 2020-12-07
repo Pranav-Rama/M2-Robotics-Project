@@ -111,7 +111,8 @@ To launch the autonomous navigation to waypoints:
 __Demonstration__ of Task 4:<br>
 <p align="center">
 <img src="Resources/Videos/task4_gif.gif"/></p> <br>
-Please click this link to download the full [video](https://github.com/IOJVision/M2-Robotics-Project/blob/main/Resources/Videos/task4_video.mp4)
+Please click this link to download the full <a href="Resources/Videos/task4_video.mp4">video</a>
+
 
 ## Conclusion
 <p align="justify">As conclusions, here we are trying to explain from top to bottom on how to handle the turtlebot 3 model burger. We start with the Introduction of the turtlebot 3. Then we continue to explain in detail for the Project Implementation that is started with the creation of a script that moves the robot around with simple /cmd_vel publishing. See the range of movement of this new robot model. Next details on how to create the mapping launches, and map the whole environment. Then, set up the move base system so that it can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles. Lastly, create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. For now, the implementation of task 4 is successfully going and the next plan was to create an autonomous script to go to three of the waypoints. We believe the approach that we demonstrated above is able to be implemented for project development success. </p> <br>
