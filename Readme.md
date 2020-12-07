@@ -99,6 +99,10 @@ The second step is to find the location of interest. As an example, the Position
 
 <br>
 <p align="justify">The final step is to write the navigation program. The navigation program will be written in Python languages which will use the rospy, actionlib and others ROS or turtlebot library. In the program code, we will include the coordinates of the waypoints and will let the user choose either to go to the waypoint 1, 2 or 3. Besides that, it can autonomously navigate through the whole 3 waypoints. The figure below shows the flowchart of the navigation program for turtlebot to reach all of the waypoints. The points set in the flowchart are as an example of the program flow.</p>
+<p align="center">
+  <img src = "Resources/Images/rosProjectTask4Flowchart.png">
+</p>
+
 
 To launch the navigation
     
