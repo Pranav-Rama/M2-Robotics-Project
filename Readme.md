@@ -91,11 +91,11 @@ _Execution_: The next task is to create a program that allows the Turtlebot3 to 
 
 <p align="justify"> The first step is to open the map which we have been mapping. By using the RViz to visualize the map, we use the 2D Pose estimate to get the waypoint coordinates. After all, it has been set up as below, open another terminal and write rostopic echo /amcl_pose to get the location of the robot on the map. While not closing the terminal, go back to RViz the click on 2D Pose Estimate button, then click to one of the waypoints on the map. Go back to the terminal where the command of rostopic echo /amcl_pose been running, and you will find the coordinate of the point selected.</p>
 
-The second step is to find the location of interest. As an example, the (x,y) coordinates of the three waypoints should look like these values:
+The second step is to find the location of interest. As an example, the Position(x,y,z) and Orientation(x,y,z, w)coordinates of the three waypoints should look like these values:
 
-- Waypoint1(27.70, 12.50) /example value
-- Waypoint2(30.44, 14.50) /example value
-- Waypoint3(35.20, 12.50) /example value
+    locations['waypoint_1'] = Pose(Point(-9.48563145743, 0.993861001173, 0.00), Quaternion(0.000, 0.000, 0.0975400737238, 0.999992502992))
+    locations['waypoint_2'] = Pose(Point(8.78885627481, -3.8867439838, 0.000), Quaternion(0.000, 0.000, 0.705633593091, 0.70857690641))
+    locations['waypoint_3'] = Pose(Point(-12.4087143203, 0.260407563831, 0.000), Quaternion(0.000, 0.000, -0.999993994471, 0.0034656921885))
 
 <br>
 <p align="justify">The final step is to write the navigation program. The navigation program will be written in Python languages which will use the rospy, actionlib and others ROS or turtlebot library. In the program code, we will include the coordinates of the waypoints and will let the user choose either to go to the waypoint 1, 2 or 3. Besides that, it can autonomously navigate through the whole 3 waypoints. The figure below shows the flowchart of the navigation program for turtlebot to reach all of the waypoints. The points set in the flowchart are as an example of the program flow.</p>
