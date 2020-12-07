@@ -66,7 +66,7 @@ _Objective_: Set up the move base system so that you can publish a goal to move_
 __Demonstration__ of Task 3:<br>
 <p align="center">
 <img src="Resources/Videos/task3_gif.gif"/></p> <br>
-Please click this link to download the full [video](https://github.com/IOJVision/M2-Robotics-Project/blob/main/Resources/Videos/task3_video.mp4)
+Please click this link to download the full <a href="Resources/Videos/task3_video.mp4">video</a>
 
 
 ## How to create a navigation program with a set of waypoints using Rviz<br>
