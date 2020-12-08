@@ -65,6 +65,7 @@ _Objective_: Set up the move base system so that you can publish a goal to move_
 <!--Put Your content-->
 <p align="justify"> <strong>Task 1</strong> and <strong>Task 2</strong> is regarding creating a mapping and subscribing to cmd_vel for moving the robot. In this <strong>task 3</strong>, we need to plan the path for the turtlebot to reach the specific goal witout hitting an obstacles through the path that the turtlebot take. To be able to do that, we will use a ros package which <strong>move_base</strong> package. <strong>Move_base</strong> is for moving the robot to a goal pose within a given reference frame. The <strong>move_base</strong> package are implementing the <strong>ROS action</strong> for reaching a given the goal that is published. This is involving the <strong>actionlib</strong> which a a package for interfacing with preemptable tasks. As example, <strong>actionlib</strong> can be used for moving the base to target location, performing a laser scan and returning the resulting point cloud, detecting the handle of a door and many more. The <strong>move_base</strong> package is using the <strong>base_local_planner</strong> that will combines the odometry data with both global and local cost maps when planning the path for the robot to reach the goal. The path is computed before the robot starts moving toward the next goal and obstacles are being takes into consideration for avoiding.</p>
 <br>
+
 __The Configuration Parameter for Path Planning__<br>
 <p align="justify">The <strong>move_base</strong>  node will require 5 configuration files before it can be run. These files is related to the cost of running into obstacles, the radius of the robot, how far into the future the path planner should look and the velocity of the robot to move. The 5 configurations files which I have created for the move_base nodes are:</p>
 
@@ -76,7 +77,8 @@ __The Configuration Parameter for Path Planning__<br>
 <br>
 
 <p align="justify">To use the parameters that we have created and to execute task 3, we have created a launch file which is called <a href="t3_navigation/launch/start_navigation.launch">start_navigation.launch</a> that include <strong>turtlebot 3 launch</strong>, <strong>map sever</strong>, <strong>AMCL</strong>, <strong>rviz</strong> and <strong>move base node</strong></p><br>
-As we can in the **start_navigation.launch** file we can see that, we have include the move_base node launch which will launch all the 5 configuration files that include the parameters that requires for the move_base node. Here is the lines of the move_base configuration in the launch file:
+
+As we can see in the **start_navigation.launch** file we can see that, we have include the move_base node launch which will launch all the 5 configuration files that include the parameters that requires for the move_base node. Here is the lines of the move_base configuration in the launch file:
 
     <!-- move_base -->
     <arg name="cmd_vel_topic" default="/cmd_vel" />
@@ -110,9 +112,12 @@ Then, we will to go RViz to initalize the robot pose and creating a goal for the
 As figures below is showing the use of the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger:
 <p align="center">
 <img src="Resources/Images/Images/task3_2dnavpose.png"/></p>
-The next figure is regarding the 2D Nav goal which is to tell the turtlebot to go to the desired goal and by using  ```rostopic echo /move_base/goal``` we will see the goal position and orientation :
+The next figure is regarding the 2D Nav goal which is to tell the turtlebot to go to the desired goal:
 <p align="center">
 <img src="Resources/Images/Images/task3_gotogoal.png"/></p>
+<br>
+
+By using  ```rostopic echo /move_base/goal``` we will see the goal position and orientation 
 <p align="center">
 <img src="Resources/Images/Images/task3_rostopicecho.png"/></p>
 
