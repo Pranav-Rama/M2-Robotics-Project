@@ -103,8 +103,19 @@ We will start with running the launch file that we mentioned above as follow:
     roslaunch t2_navigation start_navigation.launch 
 
 Then, we will to go RViz to initalize the robot pose and creating a goal for the robot to follow. In RViz we will see as follow:
+<p align="center">
+<img src="Resources/Images/Images/task3_rviz.png"/></p>
+We will need to use the **2D Pose Estimate** function in the RViz in order to initiliaze the robot pose. After the initilization has done, we will continue to use **2D Nav Goal** function to publish the goal for the turtlebot to follow. 
+<br>
+As figures below is showing the use of the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger:
+<p align="center">
+<img src="Resources/Images/Images/task3_2dnavpose.png"/></p>
+The next figure is regarding the 2D Nav goal which is to tell the turtlebot to go to the desired goal and by using  ```rostopic echo /move_base/goal``` we will see the goal position and orientation :
+<p align="center">
+<img src="Resources/Images/Images/task3_gotogoal.png"/></p>
+<p align="center">
+<img src="Resources/Images/Images/task3_rostopicecho.png"/></p>
 
-We will need to use the **2D Pose Estimate** function in the RViz in order to initiliaze the robot pose. After the initilization has done, we will continue to use **2D Nav Goal** function to publish the goal for the turtlebot to follow. We will use ```rostopic echo /move_base/goal``` to see the goal position and orientation.
 
 
 __Demonstration__ of Task 3:<br>
