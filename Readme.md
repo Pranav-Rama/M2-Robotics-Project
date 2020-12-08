@@ -172,7 +172,7 @@ _Execution_: The next task is to create a program that allows the Turtlebot3 to 
   <img src = "Resources/Images/w3.png">
 </p>
 <br>
-<p align="justify"> In here we got three figures which are the three different waypoints that need to be achieved. In order to develop a ROS program that allows the robot to navigate to those locations, we first need to know what are the (x,y) coordinates of these waypoints onto the map. Then, we will use the coordinate to define the navigation mission that we submit to the robot’s navigation stack to execute it. Remember that any robot on ROS  runs the move_base navigation stack which allows the robot to find a path towards a goal and execute the path following while avoiding obstacles. The setup of the terminal, gazebo and RViz should follow as below for easiness of getting the coordinates.</p>
+<p align="justify"> In here we got three figures which are the three different waypoints that need to be achieved. In order to develop a ROS program that allows the robot to navigate to those locations, we first need to know what are the (x,y) coordinates of these waypoints onto the map. Then, we will use the coordinate to define the navigation mission that we submit to the robot’s navigation stack to execute it. Remember that any robot on ROS runs the move_base navigation stack which allows the robot to find a path towards a goal and execute the path following while avoiding obstacles. The setup of the terminal, gazebo and RViz should follow as below for easiness of getting the coordinates.</p>
 <p align="center">
   <img src = "Resources/Images/amcl.png">
 </p>
@@ -186,10 +186,25 @@ The second step is to find the location of interest. As an example, the Position
     locations['waypoint_3'] = Pose(Point(-12.4087143203, 0.260407563831, 0.000), Quaternion(0.000, 0.000, -0.999993994471, 0.0034656921885))
 
 <br>
-<p align="justify">The final step is to write the navigation program. The navigation program will be written in Python languages which will use the rospy, actionlib and others ROS or turtlebot library. In the program code, we will include the coordinates of the waypoints and will let the user choose either to go to the waypoint 1, 2 or 3. Besides that, it can autonomously navigate through the whole 3 waypoints. The figure below shows the flowchart of the navigation program for turtlebot to reach all of the waypoints. The points set in the flowchart are as an example of the program flow.</p>
+<p align="justify">The final step is to write the navigation program. The navigation program will be written in Python languages which will use the rospy, actionlib, geometry_msg and move_base_msgs:</p>
+- Rospy: pure Python client library for ROS
+- actionlib: for interfacing with preemptable tasks
+- geometry_msg: It is common geometric primitives such as points, vectors, and poses messages
+- move_base_msgs: It is for holding the action description and relevant messages for the move_base package
+
+The usage is as follows:
+
+    import rospy
+    import actionlib
+    from actionlib_msgs.msg import *
+    from geometry_msgs.msg import Pose, PoseWithCovarianceStamped, Point, Quaternion, Twist
+    from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+
+
+In the program code, we will include the coordinates which is consist of position and orientation of the waypoints as in above that we declare the waypoints and it can autonomously navigate through the whole 3 waypoints. The figure below shows the flowchart of the navigation program for turtlebot to reach all of the waypoints. The points set in the flowchart are as an example of the program flow.</p>
 <p align="center">
   <img src = "Resources/Images/rosProjectTask4Flowchart.png">
-</p>
+
 
 
 To launch the navigation
@@ -199,6 +214,11 @@ To launch the navigation
 To launch the autonomous navigation to waypoints:
 
     roslaunch t3_waypoint autonomous_navigation.launch
+
+After launching both of it we wil the node of autonomous_way is subscribing to move_base node for publishing the waypoints that need to be reach. We can see as follow in the ```rqt_graph```: 
+<p align="center">
+  <img src = "Resources/Images/rosgraph_latest.png">
+</p>
     
 __Demonstration__ of Task 4:<br>
 <p align="center">
