@@ -63,6 +63,49 @@ _Objective_: Create mapping launches, and map the whole environment. You have to
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
 _Objective_: Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.<br>
 <!--Put Your content-->
+<p align="justify"> __Task 1__ and __Task 2__ is regarding creating a mapping and subscribing to cmd_vel for moving the robot. In this __task 3__, we need to plan the path for the turtlebot to reach the specific goal witout hitting an obstacles through the path that the turtlebot take. To be able to do that, we will use a ros package which __move_base__ package. __Move_base__ is for moving the robot to a goal pose within a given reference frame. The __move_base__ package are implementing the __ROS action__ for reaching a given the goal that is published. This is involving the __actionlib__ which a a package for interfacing with preemptable tasks. As example, __actionlib__ can be used for moving the base to target location, performing a laser scan and returning the resulting point cloud, detecting the handle of a door and many more. The __move_base__ package is using the __base_local_planner__ that will combines the odometry data with both global and local cost maps when planning the path for the robot to reach the goal. The path is computed before the robot starts moving toward the next goal and obstacles are being takes into consideration for avoiding.</p>
+<br>
+__The Configuration Parameter for Path Planning__<br>
+<p align="justify">The __move_base__  node will require 5 configuration files before it can be run. These files is related to the cost of running into obstacles, the radius of the robot, how far into the future the path planner should look and the velocity of the robot to move. The 5 configurations files which I have created for the move_base nodes are:</p>
+
+- <a href="t3_navigation/param/costmap_common_params_burger.yaml">costmap_common_params_burger.yaml</a> : The parameter of costamp configuration consists of turtlebot3 model burger
+- <a href="t3_navigation/param/local_costmap_params.yaml">local_costmap_params.yaml</a>: The parameter of the local area motion planning 
+- <a href="t3_navigation/param/global_costmap_params.yaml">global_costmap_params.yaml</a>: The parameter of global area motion planning 
+- <a href="t3_navigation/param/move_base_params.yaml">move_base_params.yaml</a>: The parameters setting file for move_base that supervise the motion planning
+- <a href="t3_navigation/param/dwa_local_planner_params.yaml">dwa_local_planner_params.yaml</a>: The parameter of the speed command to the robot
+<br>
+
+<p align="justify">To use the parameters that we have created and to execute task 3, we have created a launch file which is called <a href="t3_navigation/launch/start_navigation.launch">start_navigation.launch</a> that include **turtlebot 3 launch**, **map sever**, **AMCL**, **rviz** and **move base node**</p><br>
+As we can in the **start_navigation.launch** file we can see that, we have include the move_base node launch which will launch all the 5 configuration files that include the parameters that requires for the move_base node. Here is the lines of the move_base configuration in the launch file:
+
+    <!-- move_base -->
+    <arg name="cmd_vel_topic" default="/cmd_vel" />
+    <arg name="odom_topic" default="odom" />
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+
+      <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find t3_navigation)/param/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find t3_navigation)/param/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find t3_navigation)/param/move_base_params.yaml" command="load" />
+      <rosparam file="$(find t3_navigation)/param/dwa_local_planner_params.yaml" command="load" />
+
+      <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+      <remap from="odom" to="$(arg odom_topic)"/>
+    </node>
+
+<br>
+
+To execute Task 3, 
+We will start with running the launch file that we mentioned above as follow:
+
+    roslaunch t2_navigation start_navigation.launch 
+
+Then, we will to go RViz to initalize the robot pose and creating a goal for the robot to follow. In RViz we will see as follow:
+
+We will need to use the **2D Pose Estimate** function in the RViz in order to initiliaze the robot pose. After the initilization has done, we will continue to use **2D Nav Goal** function to publish the goal for the turtlebot to follow. We will use ```rostopic echo /move_base/goal``` to see the goal position and orientation.
+
 
 __Demonstration__ of Task 3:<br>
 <p align="center">
