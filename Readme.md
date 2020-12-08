@@ -172,21 +172,24 @@ _Execution_: The next task is to create a program that allows the Turtlebot3 to 
   <img src = "Resources/Images/w3.png">
 </p>
 <br>
-<p align="justify"> In here we got three figures which are the three different waypoints that need to be achieved. In order to develop a ROS program that allows the robot to navigate to those locations, we first need to know what are the (x,y) coordinates of these waypoints onto the map. Then, we will use the coordinate to define the navigation mission that we submit to the robot’s navigation stack to execute it. Remember that any robot on ROS runs the move_base navigation stack which allows the robot to find a path towards a goal and execute the path following while avoiding obstacles. The setup of the terminal, gazebo and RViz should follow as below for easiness of getting the coordinates.</p>
+<p align="justify"> In here we got three figures which are the three different waypoints that need to be achieved. In order to develop a ROS program that allows the robot to navigate to those locations, we first need to know what are the Position(x,y,z) and Orientation(x,y,z, w) coordinates of these waypoints onto the map. Then, we will use the coordinate to define the navigation mission that we submit to the robot’s navigation stack to execute it. Remember that any robot on ROS runs the move_base navigation stack which allows the robot to find a path towards a goal and execute the path following while avoiding obstacles. The setup of the terminal, gazebo and RViz should follow as below for easiness of getting the coordinates.</p>
 <p align="center">
   <img src = "Resources/Images/amcl.png">
 </p>
 
-<p align="justify"> The first step is to open the map which we have been mapping. By using the RViz to visualize the map, we use the 2D Pose estimate to get the waypoint coordinates. After all, it has been set up as below, open another terminal and write rostopic echo /amcl_pose to get the location of the robot on the map. While not closing the terminal, go back to RViz the click on 2D Pose Estimate button, then click to one of the waypoints on the map. Go back to the terminal where the command of rostopic echo /amcl_pose been running, and you will find the coordinate of the point selected.</p>
+<p align="justify"> The first step is to launch our start_navigation launch that will launch RViz and the mapped map. By using the RViz to visualize the map, we use the 2D Pose estimate to get the waypoint coordinates. After all, it has been set up as below, open another terminal and write rostopic echo /amcl_pose to get the location of the robot on the map. While not closing the terminal, go back to RViz the click on 2D Pose Estimate button, then click to one of the waypoints on the map. Go back to the terminal where the command of rostopic echo /amcl_pose been running, and you will find the coordinate of the point selected.</p>
 
-The second step is to find the location of interest. As an example, the Position(x,y,z) and Orientation(x,y,z, w)coordinates of the three waypoints should look like these values:
+The second step is to find the location of interest. Then, the waypoints locations (poses) are stored as a Python dictionary in the script that we are making. As an example, the Position(x,y,z) and Orientation(x,y,z, w) coordinates of the three waypoints should look like these values:
 
+    locations = dict()
     locations['waypoint_1'] = Pose(Point(-9.48563145743, 0.993861001173, 0.00), Quaternion(0.000, 0.000, 0.0975400737238, 0.999992502992))
     locations['waypoint_2'] = Pose(Point(8.78885627481, -3.8867439838, 0.000), Quaternion(0.000, 0.000, 0.705633593091, 0.70857690641))
     locations['waypoint_3'] = Pose(Point(-12.4087143203, 0.260407563831, 0.000), Quaternion(0.000, 0.000, -0.999993994471, 0.0034656921885))
 
+
 <br>
-<p align="justify">The final step is to write the navigation program. The navigation program will be written in Python languages which will use the rospy, actionlib, geometry_msg and move_base_msgs:</p>
+<p align="justify">The final step is to write the navigation program. The navigation program will be written in Python languages which will use the:</p>
+
 - Rospy: pure Python client library for ROS
 - actionlib: for interfacing with preemptable tasks
 - geometry_msg: It is common geometric primitives such as points, vectors, and poses messages
