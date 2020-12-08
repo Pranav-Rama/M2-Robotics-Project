@@ -134,13 +134,22 @@ Then we will launch the follow waypoints packages to start the waypoint server. 
     roslaunch follow_waypoints follow_waypoints.launch 
 After running that, see in RViz and add the PoseArray element and subscribe it to topic of /waypoints as you can see in figure below to show all the waypoints that we will set.  
 <p align="center">
-<img src="Resources/Images/Images/task3_rostopicecho.png"/></p>
+<img src="Resources/Images/Images/task3_posearray.png"/></p>
 
-After that use the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger and set the waypoint for the robot to follow
+After that use the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger and set the goal for the robot to follow:
+<p align="center">
+<img src="Resources/Images/task3_waypoint set.png"/></p>
 
+And in the terminal it will show this:
 
     [INFO][140446249940736][/follow_waypoints/execute:189]: Recieved newwaypoint
+
+Now, after the waypoint is set. We publish it to topic /path_ready to send the goal to the move_base.
+
     rostopic pub /path_ready std_msgs/Empty -1
+We will see the robot move to the goal the we just set. 
+<p align="center">
+<img src="Resources/Images/task3_rostopicpub.png"/></p>
 
 __Demonstration__ of Task 3:<br>
 <p align="center">
