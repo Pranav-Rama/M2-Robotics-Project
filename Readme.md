@@ -126,7 +126,21 @@ By using  ```rostopic echo /move_base/goal``` we will see the goal position and 
 <p align="center">
 <img src="Resources/Images/Images/task3_rostopicecho.png"/></p>
 
+<p align="justify">For implementing the Task3, we will be using the ROS Packages follow_waypoints by daniel snider for demonstrating how we can publishing the goal throught the terminal to reach the goal. We will start by running our start_navigation launch as below:
+  
+    roslaunch t3_navigation start_navigation.launch 
+Then we will launch the follow waypoints packages to start the waypoint server. The server will subscribe to the /initialpose topic and store the pose until it asked to send to ***move_base*** to be executed. Run as follows:
 
+    roslaunch follow_waypoints follow_waypoints.launch 
+After running that, see in RViz and add the PoseArray element and subscribe it to topic of /waypoints as you can see in figure below to show all the waypoints that we will set.  
+<p align="center">
+<img src="Resources/Images/Images/task3_rostopicecho.png"/></p>
+
+After that use the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger and set the waypoint for the robot to follow
+
+
+    [INFO][140446249940736][/follow_waypoints/execute:189]: Recieved newwaypoint
+    rostopic pub /path_ready std_msgs/Empty -1
 
 __Demonstration__ of Task 3:<br>
 <p align="center">
