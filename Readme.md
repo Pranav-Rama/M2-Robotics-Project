@@ -134,7 +134,7 @@ Then we will launch the follow waypoints packages to start the waypoint server. 
     roslaunch follow_waypoints follow_waypoints.launch 
 After running that, see in RViz and add the PoseArray element and subscribe it to topic of /waypoints as you can see in figure below to show all the waypoints that we will set.  
 <p align="center">
-<img src="Resources/Images/Images/task3_posearray.png"/></p>
+<img src="Resources/Images/task3_posearray.png"/></p>
 
 After that use the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger and set the goal for the robot to follow:
 <p align="center">
