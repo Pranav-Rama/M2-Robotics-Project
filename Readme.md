@@ -102,11 +102,16 @@ As we can see in the **start_navigation.launch** file we can see that, we have i
 To execute Task 3, 
 We will start with running the launch file that we mentioned above as follow:
 
-    roslaunch t2_navigation start_navigation.launch 
+    roslaunch t3_navigation start_navigation.launch 
 
 Then, we will to go RViz to initalize the robot pose and creating a goal for the robot to follow. In RViz we will see as follow:
 <p align="center">
 <img src="Resources/Images/Images/task3_rviz.png"/></p>
+
+We will see the rqt_graph for the visualization of how the nodes are connected for subscribing the move_base node:
+<p align="center">
+<img src="Resources/Images/rosgraphtask3.png"/></p>
+
 <p align="justify">We will need to use the <strong>2D Pose Estimate</strong> function in the RViz in order to initiliaze the robot pose. After the initilization has done, we will continue to use <strong>2D Nav Goal</strong> function to publish the goal for the turtlebot to follow.</p>
 <br>
 As figures below is showing the use of the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger:
