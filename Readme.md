@@ -63,11 +63,14 @@ _Objective_: Create mapping launches, and map the whole environment. You have to
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
 _Objective_: Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.<br>
 <!--Put Your content-->
-<p align="justify"> <strong>Task 1</strong> and <strong>Task 2</strong> is regarding creating a mapping and subscribing to cmd_vel for moving the robot. In this <strong>task 3</strong>, we need to plan the path for the turtlebot to reach the specific goal witout hitting an obstacles through the path that the turtlebot take. To be able to do that, we will use a ros package which <strong>move_base</strong> package. <strong>Move_base</strong> is for moving the robot to a goal pose within a given reference frame. The <strong>move_base</strong> package are implementing the <strong>ROS action</strong> for reaching a given the goal that is published. This is involving the <strong>actionlib</strong> which a a package for interfacing with preemptable tasks. As example, <strong>actionlib</strong> can be used for moving the base to target location, performing a laser scan and returning the resulting point cloud, detecting the handle of a door and many more. The <strong>move_base</strong> package is using the <strong>base_local_planner</strong> that will combines the odometry data with both global and local cost maps when planning the path for the robot to reach the goal. The path is computed before the robot starts moving toward the next goal and obstacles are being takes into consideration for avoiding.</p>
+<p align="justify"> <strong>Task 1</strong> and <strong>Task 2</strong> is regarding creating mapping and subscribing to cmd_vel for moving the robot. In this <strong>task 3</strong>, we need to plan the path for the turtlebot to reach the specific goal without hitting an obstacle through the path that the turtlebot takes. To be able to do that, we will use a ros package which <strong>move_base</strong> package. <strong>Move_base</strong> is for moving the robot to a goal pose within a given reference frame. The <strong>move_base</strong> package are implementing the <strong>ROS action</strong> for reaching a given the goal that is published. This is involving the <strong>actionlib</strong> which a a package for interfacing with preemptable tasks. For example, <strong>actionlib</strong> can be used for moving the base to the target location, performing a laser scan, and returning the resulting point cloud, detecting the handle of a door, and many more. The <strong>move_base</strong> package is using the <strong>base_local_planner</strong> that will combine the odometry data with both global and local cost maps when planning the path for the robot to reach the goal. The path is computed before the robot starts moving toward the next goal and obstacles are being taken into consideration for avoiding.</p>
 <br>
 
+
+
+
 __The Configuration Parameter for Path Planning__<br>
-<p align="justify">The <strong>move_base</strong>  node will require 5 configuration files before it can be run. These files is related to the cost of running into obstacles, the radius of the robot, how far into the future the path planner should look and the velocity of the robot to move. The 5 configurations files which I have created for the move_base nodes are:</p>
+<p align="justify">The <strong>move_base</strong>  node will require 5 configuration files before it can be run. These files are related to the cost of running into obstacles, the radius of the robot, how far into the future the path planner should look and the velocity of the robot to move. The 5 configurations files which I have created for the move_base nodes are:</p>
 
 - <a href="t3_navigation/param/costmap_common_params_burger.yaml">costmap_common_params_burger.yaml</a> : The parameter of costamp configuration consists of turtlebot3 model burger
 - <a href="t3_navigation/param/local_costmap_params.yaml">local_costmap_params.yaml</a>: The parameter of the local area motion planning 
@@ -78,7 +81,7 @@ __The Configuration Parameter for Path Planning__<br>
 
 <p align="justify">To use the parameters that we have created and to execute task 3, we have created a launch file which is called <a href="t3_navigation/launch/start_navigation.launch">start_navigation.launch</a> that include <strong>turtlebot 3 launch</strong>, <strong>map sever</strong>, <strong>AMCL</strong>, <strong>rviz</strong> and <strong>move base node</strong></p><br>
 
-As we can see in the **start_navigation.launch** file we can see that, we have include the move_base node launch which will launch all the 5 configuration files that include the parameters that requires for the move_base node. Here is the lines of the move_base configuration in the launch file:
+As we can see in the **start_navigation.launch** file we can see that we have included the move_base node launch which will launch all the 5 configuration files that include the parameters that require for the move_base node. Here are the lines of the move_base configuration in the launch file:
 
     <!-- move_base -->
     <arg name="cmd_vel_topic" default="/cmd_vel" />
@@ -100,21 +103,21 @@ As we can see in the **start_navigation.launch** file we can see that, we have i
 <br>
 
 To execute Task 3, 
-We will start with running the launch file that we mentioned above as follow:
+We will start by running the launch file that we mentioned above as follow:
 
     roslaunch t3_navigation start_navigation.launch 
 
-Then, we will to go RViz to initalize the robot pose and creating a goal for the robot to follow. In RViz we will see as follow:
+Then, we will to go RViz to initialize the robot pose and creating a goal for the robot to follow. In RViz we will see as follow:
 <p align="center">
 <img src="Resources/Images/Images/task3_rviz.png"/></p>
 
-We will see the rqt_graph for the visualization of how the nodes are connected for subscribing the move_base node:
+We will see the rqt_graph for the visualization of how the nodes are connected for subscribing to the move_base node:
 <p align="center">
 <img src="Resources/Images/rosgraphtask3.png"/></p>
 
-<p align="justify">We will need to use the <strong>2D Pose Estimate</strong> function in the RViz in order to initiliaze the robot pose. After the initilization has done, we will continue to use <strong>2D Nav Goal</strong> function to publish the goal for the turtlebot to follow.</p>
+<p align="justify">We will need to use the <strong>2D Pose Estimate</strong> function in the RViz to initialize the robot pose. After the initialization has been done, we will continue to use <strong>2D Nav Goal</strong> function to publish the goal for the turtlebot to follow.</p>
 <br>
-As figures below is showing the use of the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger:
+As figures below are showing the use of the 2D Pose Estimate in RViz for the pose initialization of the turtlebot 3 burger:
 <p align="center">
 <img src="Resources/Images/Images/task3_2dnavpose.png"/></p>
 The next figure is regarding the 2D Nav goal which is to tell the turtlebot to go to the desired goal:
@@ -126,17 +129,17 @@ By using  ```rostopic echo /move_base/goal``` we will see the goal position and 
 <p align="center">
 <img src="Resources/Images/Images/task3_rostopicecho.png"/></p>
 
-<p align="justify">For implementing the Task3, we will be using the ROS Packages follow_waypoints by daniel snider for demonstrating how we can publishing the goal throught the terminal to reach the goal. We will start by running our start_navigation launch as below:
+<p align="justify">For implementing Task3, we will be using the ROS Packages follow_waypoints by daniel snider for demonstrating how we can publishing the goal through the terminal to reach the goal. We will start by running our start_navigation launch as below:
   
     roslaunch t3_navigation start_navigation.launch 
 Then we will launch the follow waypoints packages to start the waypoint server. The server will subscribe to the /initialpose topic and store the pose until it asked to send to ***move_base*** to be executed. Run as follows:
 
     roslaunch follow_waypoints follow_waypoints.launch 
-After running that, see in RViz and add the PoseArray element and subscribe it to topic of /waypoints as you can see in figure below to show all the waypoints that we will set.  
+After running that, see in RViz and add the PoseArray element and subscribe it to the topic of /waypoints as you can see in the figure below to show all the waypoints that we will set.  
 <p align="center">
 <img src="Resources/Images/task3_posearray.png"/></p>
 
-After that use the 2D Pose Estimate in RViz for the pose initiliazation of the turtlebot 3 burger and set the goal for the robot to follow:
+After that use the 2D Pose Estimate in RViz for the pose initialization  of the turtlebot 3 burger and set the goal for the robot to follow:
 <p align="center">
 <img src="Resources/Images/task3_waypoint set.png"/></p>
 
@@ -172,12 +175,12 @@ _Execution_: The next task is to create a program that allows the Turtlebot3 to 
   <img src = "Resources/Images/w3.png">
 </p>
 <br>
-<p align="justify"> In here we got three figures which are the three different waypoints that need to be achieved. In order to develop a ROS program that allows the robot to navigate to those locations, we first need to know what are the Position(x,y,z) and Orientation(x,y,z, w) coordinates of these waypoints onto the map. Then, we will use the coordinate to define the navigation mission that we submit to the robot’s navigation stack to execute it. Remember that our robot on ROS runs the move_base navigation stack which allows the robot to find a path towards a goal and execute the path following while avoiding obstacles. The setup of the terminal, gazebo and RViz should follow as below for easiness of getting the coordinates.</p>
+<p align="justify"> Here we got three figures which are the three different waypoints that need to be achieved. To develop a ROS program that allows the robot to navigate to those locations, we first need to know what is the Position(x,y,z) and Orientation(x,y,z, w) coordinates of these waypoints onto the map. Then, we will use the coordinate to define the navigation mission that we submit to the robot’s navigation stack to execute it. Remember that our robot on ROS runs the move_base navigation stack which allows the robot to find a path towards a goal and execute the path following while avoiding obstacles. The setup of the terminal, gazebo and RViz should follow as below for easiness of getting the coordinates.</p>
 <p align="center">
   <img src = "Resources/Images/amcl.png">
 </p>
 
-<p align="justify"> The first step is to launch our start_navigation launch that will launch RViz and the mapped map. By using the RViz to visualize the map, we use the 2D Pose estimate to get the waypoint coordinates. After all, it has been set up as below, open another terminal and write rostopic echo /amcl_pose to get the location of the robot on the map. While not closing the terminal, go back to RViz the click on 2D Pose Estimate button, then click to one of the waypoints on the map. Go back to the terminal where the command of rostopic echo /amcl_pose been running, and you will find the coordinate of the point selected.</p>
+<p align="justify"> The first step is to launch our start_navigation launch that will launch RViz and the mapped map. By using the RViz to visualize the map, we use the 2D Pose estimate to get the waypoint coordinates. After all, it has been set up as below, open another terminal and write rostopic echo /amcl_pose to get the location of the robot on the map. While not closing the terminal, go back to RViz the click on 2D Pose Estimate button, then click on one of the waypoints on the map. Go back to the terminal where the command of rostopic echo /amcl_pose has been running, and you will find the coordinate of the point selected.</p>
 
 The second step is to find the location of interest. Then, the waypoints locations (poses) are stored as a Python dictionary in the script that we are making. As an example, the Position(x,y,z) and Orientation(x,y,z, w) coordinates of the three waypoints should look like these values:
 
@@ -204,7 +207,7 @@ The usage is as follows:
     from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
 
-In the program code, we will include the coordinates which is consist of position and orientation of the waypoints as in above that we declare the waypoints and it can autonomously navigate through the whole 3 waypoints. The figure below shows the flowchart of the navigation program for turtlebot to reach all of the waypoints. The points set in the flowchart are as an example of the program flow.</p>
+In the program code, we will include the coordinates which is consist of the position and orientation of the waypoints as in above that we declare the waypoints and it can autonomously navigate through the whole 3 waypoints. The figure below shows the flowchart of the navigation program for turtlebot to reach all of the waypoints. The points set in the flowchart are an example of the program flow.</p>
 <p align="center">
   <img src = "Resources/Images/rosProjectTask4Flowchart.png">
 
@@ -218,7 +221,7 @@ To launch the autonomous navigation to waypoints:
 
     roslaunch t3_waypoint autonomous_navigation.launch
 
-After launching both of it we wil the node of autonomous_way is subscribing to move_base node for publishing the waypoints that need to be reach. We can see as follow in the ```rqt_graph```: 
+After launching both of them we will see the node of autonomous_way is subscribing to move_base node for publishing the waypoints that need to be reached. We can see as follow in the ```rqt_graph```: 
 <p align="center">
   <img src = "Resources/Images/rosgraph_latest.png">
 </p>
