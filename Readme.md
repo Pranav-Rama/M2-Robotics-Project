@@ -17,13 +17,13 @@ Students: <br>
  Muhammad Izzul Azri ZAINOL AZMAN <br>
  Pranavan Ramakrishnan
 </h4>
-<p align="center">
+<!--<p align="center">
   <p align = "center">
      <img  src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
      <img  src = "resources/turtlebot3.jpg" width=400>
     
-  </p>
-</p>
+ <!-- </p>
+</p>-->
 
 ## Table of Content 
 
