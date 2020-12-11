@@ -51,10 +51,9 @@ Students: <br>
 ## Project Implementation<br>
 
 ## How to control the robot with /cmd_vel<br>
-_Objective_: Create a script that moves the robot around with simple /cmd_vel publishing. See the range of
-movement of this new robot model.
-
-<!--Put Your content-->
+<p align="justify"> <strong>/cmd_vel</strong>: Is a topic name that carries communication messages in the form of velocity units(x, y, z) contained in the geometry_msgs / Twist type. 
+In order to control the robot using the /cmd_vel topic we have to publish velocity messages from a node(python programs in this case). These published messages will be then subscribed by the built in gazebo simulator to generate the simulation.
+</p>
 
 ## How to create a mapping program launches to map the environment<br>
 _Objective_: Create mapping launches, and map the whole environment. You have to finish with a clean map of the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot.<br>
