@@ -85,18 +85,18 @@ Outline:
 --> Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f my_map --> map.pgm, map.yaml<br>
 
 **Slam g_mapping Node** : 
-The gmapping Package provides laser based SLAM as slam_gmapping Node. This node 
-Subcribes to:   /kobuki/laser/scan  :Laser Scan Topic   | sensor_msgs/LaserScan
-                /tf  :Transform Topic                   | tf/tfMessages    
+The gmapping Package provides laser based SLAM as slam_gmapping Node. This node,<br>
+Subcribes to:   /kobuki/laser/scan  :Laser Scan Topic   | sensor_msgs/LaserScan<br>
+                /tf  :Transform Topic                   | tf/tfMessages<br>    
                 
-Publishes OGM to:   /map :Map Topic                     | nav_msgs/OccupancyGrid    -.pgm
-                    /map_metadata Topic                 | nav_msgs/MapMetaData      -.yaml
-                    /static_map  Service                | rosservice call /static_map "{}"
-Essentially we create a .launch file for the map_server Node that renders OGM data(.pgm) in RViz.
+Publishes OGM to:   /map :Map Topic                     | nav_msgs/OccupancyGrid    -.pgm<br>
+                    /map_metadata Topic                 | nav_msgs/MapMetaData      -.yaml<br>
+                    /static_map  Service                | rosservice call /static_map "{}"<br>
+Essentially we create a .launch file for the map_server Node that renders OGM data(.pgm) in RViz.<br>
 
 **Save OGM map**:
-.yaml file: image, resolution, origin,negate, 
-.pgm file: Image file(can be rendered on GIMP)
+.yaml file: image, resolution, origin,negate, <br>
+.pgm file: Image file(can be rendered on GIMP)<br>
 
 These 2 files are what you will provide to other Nodes. Nodes can later subcribe to the static_map(nav_msgs/GetMap) Service.
 To start publishing OGM: rosrun map_server map_server my_map.yaml</p> 
