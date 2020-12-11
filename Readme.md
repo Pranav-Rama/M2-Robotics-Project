@@ -1,6 +1,8 @@
 <h1 align="center"> Robotics Project </h1> <br>
 <p align="center">
 University De Bourgogne<br> 
+  <p align="center">
+<img src="Resources/Images/UB_logo.png"/></p>
   (VIBOT)
   <p align="center">
       <img src = "vibot.png" width=60>
