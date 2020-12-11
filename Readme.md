@@ -78,13 +78,13 @@ _Objective_: Create mapping launches, and map the whole environment. You have to
 <p align="justify"> <strong>Mapping</strong>: 
 
 Outline:  
---> Launch slam_gmapping Node: roslaunch turtlebot_navigation_gazebo gmapping_demo.launch<br>
---> RViz : rosrun rviz rviz<br>
---> RViz GUI<br>
---> (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
+- Launch slam_gmapping Node: roslaunch turtlebot_navigation_gazebo gmapping_demo.launch<br>
+- RViz : rosrun rviz rviz<br>
+- RViz GUI<br>
+- (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
     (add) Map; Topic: /map <br>
---> Launch a cmd prog to move the robot arround(SLAM): roslaunch turtlebot_teleop keyboard_teleop.launch<br>
---> Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f my_map --> map.pgm, map.yaml<br>
+- Launch a cmd prog to move the robot around(SLAM): roslaunch turtlebot_teleop keyboard_teleop.launch<br>
+- Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f my_map --> map.pgm, map.yaml<br>
 
 **Slam g_mapping Node** : 
 The gmapping Package provides laser based SLAM as slam_gmapping Node. This node,<br>
@@ -100,7 +100,7 @@ The gmapping Package provides laser based SLAM as slam_gmapping Node. This node,
 .yaml file: image, resolution, origin,negate, <br>
 .pgm file: Image file(can be rendered on GIMP)<br>
 
-These 2 files are what you will provide to other Nodes. Nodes can later subcribe to the static_map(nav_msgs/GetMap) Service.
+These 2 files are what you will provide to other Nodes. Nodes can later subscribe to the static_map(nav_msgs/GetMap) Service.
 To start publishing OGM: rosrun map_server map_server my_map.yaml</p> 
 
 <p align="center">
@@ -192,7 +192,7 @@ After that use the 2D Pose Estimate in RViz for the pose initialization  of the 
 
 And in the terminal it will show this:
 
-    [INFO][140446249940736][/follow_waypoints/execute:189]: Recieved newwaypoint
+    [INFO][140446249940736][/follow_waypoints/execute:189]: Received newwaypoint
 
 Now, after the waypoint is set. We publish it to topic /path_ready to send the goal to the move_base.
 
