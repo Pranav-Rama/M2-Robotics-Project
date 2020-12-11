@@ -2,10 +2,10 @@
 <p align="center">
 University De Bourgogne<br> 
   <p align="center">
-<img src="Resources/Images/UB_logo.png" width=60</p>
+<img src="Resources/Images/UB_logo.png" width=300</p>
   (VIBOT)
   <p align="center">
-      <img src = "Resources/Images/Vibot.png" width=60>
+      <img src = "Resources/Images/Vibot.png" width=300>
   </p>
 </p>
 
