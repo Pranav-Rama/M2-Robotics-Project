@@ -103,6 +103,10 @@ Essentially we create a .launch file for the map_server Node that renders OGM da
 These 2 files are what you will provide to other Nodes. Nodes can later subcribe to the static_map(nav_msgs/GetMap) Service.
 To start publishing OGM: rosrun map_server map_server my_map.yaml</p> 
 
+<p align="center">
+<img src="Resources/Videos/costa_mapping1.webm"/></p> <br>
+Please click this link to download the full <a href="Resources/Videos/costa_mapping1.webm">video</a>
+
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
 _Objective_: Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.<br>
 <!--Put Your content-->
