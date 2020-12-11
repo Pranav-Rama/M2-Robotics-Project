@@ -51,6 +51,7 @@ Students: <br>
 ## Project Implementation<br>
 
 ## How to control the robot with /cmd_vel<br>
+_Objective_: Create a script that moves the robot around with simple /cmd_vel publishing. See the range of movement of this new robot model.<br>
 <p align="justify"> <strong>/cmd_vel</strong>: Is a topic name that carries communication messages in the form of velocity units(x, y, z) contained in the geometry_msgs / Twist type. 
 In order to control the robot using the /cmd_vel topic we have to publish velocity messages from a node(python programs in this case). These published messages will be then subscribed by the built in gazebo simulator to generate the simulation.
 *For instance if we would like to use ROS to launch just commands of motion;</p> 
@@ -68,12 +69,37 @@ Procedure to publish:
       - iii) name = ‘node_name’ 
       - iv) output = ‘screen’ 
 - 3) roslaunch <package> <launch file> 
-- In order to see the range of the movement of the robot we echo the readings from the /kobuki/laser/scan Topic. 
-
 
 ## How to create a mapping program launches to map the environment<br>
 _Objective_: Create mapping launches, and map the whole environment. You have to finish with a clean map of the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot.<br>
 <!--Put Your content-->
+<p align="justify"> <strong>Mapping</strong>: 
+
+Outline:  
+--> Launch slam_gmapping Node: roslaunch turtlebot_navigation_gazebo gmapping_demo.launch
+--> RViz : rosrun rviz rviz
+--> RViz GUI
+--> (add) Laser_Scan; Topic: /kobuki/laser/scan 
+    (add) Map; Topic: /map 
+--> Launch a cmd prog to move the robot arround(SLAM): roslaunch turtlebot_teleop keyboard_teleop.launch
+--> Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f my_map --> map.pgm, map.yaml
+
+**Slam g_mapping Node** : 
+The gmapping Package provides laser based SLAM as slam_gmapping Node. This node 
+Subcribes to:   /kobuki/laser/scan  :Laser Scan Topic   | sensor_msgs/LaserScan
+                /tf  :Transform Topic                   | tf/tfMessages    
+                
+Publishes OGM to:   /map :Map Topic                     | nav_msgs/OccupancyGrid    -.pgm
+                    /map_metadata Topic                 | nav_msgs/MapMetaData      -.yaml
+                    /static_map  Service                | rosservice call /static_map "{}"
+Essentially we create a .launch file for the map_server Node that renders OGM data(.pgm) in RViz.
+
+**Save OGM map**:
+.yaml file: image, resolution, origin,negate, 
+.pgm file: Image file(can be rendered on GIMP)
+
+These 2 files are what you will provide to other Nodes. Nodes can later subcribe to the static_map(nav_msgs/GetMap) Service.
+To start publishing OGM: rosrun map_server map_server my_map.yaml</p> 
 
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
 _Objective_: Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.<br>
