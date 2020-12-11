@@ -104,8 +104,8 @@ These 2 files are what you will provide to other Nodes. Nodes can later subcribe
 To start publishing OGM: rosrun map_server map_server my_map.yaml</p> 
 
 <p align="center">
-<img src="Resources/Videos/costa_mapping1.webm"/></p> <br>
-Please click this link to download the full <a href="Resources/Videos/costa_mapping1.webm">video</a>
+<img src="Resources/Videos/costa_mapping1.mp4"/></p> <br>
+Please click this link to download the full <a href="Resources/Videos/costa_mapping1.mp4">video</a>
 
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
 _Objective_: Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.<br>
