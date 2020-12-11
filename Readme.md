@@ -208,7 +208,7 @@ Please click this link to download the full <a href="Resources/Videos/task3_vide
 
 
 ## How to create a navigation program with a set of waypoints using Rviz<br>
-_Objective_: Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the next page.<br> 
+_Objective_: Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. <br> 
 <br>
 _Execution_: The next task is to create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the below figures. 
 <p align="center">
