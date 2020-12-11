@@ -5,7 +5,7 @@ University De Bourgogne<br>
 <img src="Resources/Images/UB_logo.png"/></p>
   (VIBOT)
   <p align="center">
-      <img src = "vibot.png" width=60>
+      <img src = "Resources/Images/Vibot.png" width=60>
   </p>
 </p>
 
