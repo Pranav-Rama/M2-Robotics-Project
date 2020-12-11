@@ -104,7 +104,7 @@ These 2 files are what you will provide to other Nodes. Nodes can later subcribe
 To start publishing OGM: rosrun map_server map_server my_map.yaml</p> 
 
 <p align="center">
-<img src="Resources/Videos/costa_mapping1.mp4"/></p> <br>
+<img src="Resources/Videos/costa_mapping1.gif"/></p> <br>
 Please click this link to download the full <a href="Resources/Videos/costa_mapping1.mp4">video</a>
 
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
