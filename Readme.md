@@ -53,6 +53,21 @@ Students: <br>
 ## How to control the robot with /cmd_vel<br>
 <p align="justify"> <strong>/cmd_vel</strong>: Is a topic name that carries communication messages in the form of velocity units(x, y, z) contained in the geometry_msgs / Twist type. 
 In order to control the robot using the /cmd_vel topic we have to publish velocity messages from a node(python programs in this case). These published messages will be then subscribed by the built in gazebo simulator to generate the simulation.
+*For instance if we would like to use ROS to launch just commands of motion; 
+Procedure to publish: 
+1) Create a publisher(python_program.py) - 
+a) make sure to initialize the node. 
+i) rospy.init_node(‘node_name’) 
+b) Assign topic and message type. 
+i) rospy.Publisher(‘/cmd_vel’, Twist, queue_size=1) 
+2) Create a launch file for the <node> - 
+a) make sure to use correct: 
+i) pkg = package name 
+ii) type = program type(python_program.py) 
+iii) name = ‘node_name’ 
+iv) output = ‘screen’ 
+3) roslaunch <package> <launch file> 
+In order to see the range of the movement of the robot we echo the readings from the /kobuki/laser/scan Topic. 
 </p>
 
 ## How to create a mapping program launches to map the environment<br>
