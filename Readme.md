@@ -76,13 +76,13 @@ _Objective_: Create mapping launches, and map the whole environment. You have to
 <p align="justify"> <strong>Mapping</strong>: 
 
 Outline:  
---> Launch slam_gmapping Node: roslaunch turtlebot_navigation_gazebo gmapping_demo.launch
---> RViz : rosrun rviz rviz
---> RViz GUI
---> (add) Laser_Scan; Topic: /kobuki/laser/scan 
-    (add) Map; Topic: /map 
---> Launch a cmd prog to move the robot arround(SLAM): roslaunch turtlebot_teleop keyboard_teleop.launch
---> Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f my_map --> map.pgm, map.yaml
+--> Launch slam_gmapping Node: roslaunch turtlebot_navigation_gazebo gmapping_demo.launch<br>
+--> RViz : rosrun rviz rviz<br>
+--> RViz GUI<br>
+--> (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
+    (add) Map; Topic: /map <br>
+--> Launch a cmd prog to move the robot arround(SLAM): roslaunch turtlebot_teleop keyboard_teleop.launch<br>
+--> Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f my_map --> map.pgm, map.yaml<br>
 
 **Slam g_mapping Node** : 
 The gmapping Package provides laser based SLAM as slam_gmapping Node. This node 
