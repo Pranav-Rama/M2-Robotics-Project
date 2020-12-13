@@ -64,13 +64,13 @@ Procedure to publish:
      - i) rospy.init_node(‘node_name’) 
   - b) Assign topic and message type. 
      - i) rospy.Publisher(‘/cmd_vel’, Twist, queue_size=1) 
-- 2) Create a launch file for the <node> - 
+- 2) Create a launch file for the nod - 
     - a) make sure to use correct: 
       - i) pkg = package name 
       - ii) type = program type(python_program.py) 
       - iii) name = ‘node_name’ 
       - iv) output = ‘screen’ 
-- 3) roslaunch <package> <launch file> 
+- 3) roslaunch costa_cafe_navigation keyboard_control.launch
 
 ## How to create a mapping program launches to map the environment<br>
 _Objective_: Create mapping launches, and map the whole environment. You have to finish with a clean map of the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot.<br>
@@ -129,10 +129,11 @@ Outline:
 AMCL Package:
 
 Provides the amcl node(preconfigured). This node:<br>
--Subscribe to:	/laser/scan<br>
+		
+	- Subscribe to:	/laser/scan<br>
 		/map<br>
 		/tf<br>
--Publish to:	/amcl_pose<br>
+	- Publish to:	/amcl_pose<br>
 		/particlecloud<br>
 
 		
