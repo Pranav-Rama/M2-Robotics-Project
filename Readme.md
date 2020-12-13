@@ -90,10 +90,10 @@ Outline:
     		(add) Map; Topic: /map 
 - Launch a cmd prog to move the robot around(SLAM): 
 
-		roslaunch costa_cafe_navigation keyboard_control.launch<br>
+		roslaunch costa_cafe_navigation keyboard_control.launch
 - Save OGM map; 
 
-		cd ~/catkin_ws/src : rosrun map_server map_saver -f costa_cafe --> .pgm, .yaml<br>
+		cd ~/catkin_ws/src : rosrun map_server map_saver -f costa_cafe --> .pgm, .yaml
 
 **Slam g_mapping Node** : 
 The gmapping Package provides laser based SLAM as slam_gmapping Node. This node,<br>
