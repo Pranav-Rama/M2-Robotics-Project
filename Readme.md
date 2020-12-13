@@ -129,11 +129,11 @@ Outline:
 AMCL Package:
 
 Provides the amcl node(preconfigured). This node:<br>
-							--Subscribe to:	/laser/scan<br>
-										/map<br>
-										/tf<br>
-							--Publish to:	/amcl_pose<br>
-										/particlecloud<br>
+-Subscribe to:	/laser/scan<br>
+		/map<br>
+		/tf<br>
+-Publish to:	/amcl_pose<br>
+		/particlecloud<br>
 
 		
 **Monte Carlo Localization:**
@@ -142,7 +142,7 @@ It is an algorithm used to solve the localization problem in robotics. It genera
 <br>
 
 <p align="center">
-<img src="Resources/Videos/costa_mapping1.gif"/></p> <br>
+<img src="Resources/Videos/costa_cafe_localize.gif"/></p> <br>
 Please click this link to download the full <a href="Resources/Videos/costa_cafe_localize.gif">video</a>
 
 
