@@ -143,8 +143,8 @@ It is an algorithm used to solve the localization problem in robotics. It genera
 <br>
 
 <p align="center">
-<img src="Resources/Videos/costa.gif"/></p> <br>
-Please click this link to download the full <a href="Resources/Videos/costa.gif">video</a>
+<img src="Resources/Videos/costa_cafe_lacalize.gif"/></p> <br>
+Please click this link to download the full <a href="Resources/Videos/costa_cafe_lacalize.gif">video</a>
 
 
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
