@@ -73,7 +73,7 @@ Procedure to publish:
 - 3) roslaunch costa_cafe_navigation keyboard_control.launch
 
 ## How to create a mapping program launches to map the environment<br>
-_Objective_: Create mapping launches, and map the whole environment. You have to finish with a clean map of the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot.<br>
+_Objective_: Create mapping launches, and map the whole environment. To setup the launch file to be able to localize the Turtlebot3 robot.<br>
 <!--Put Your content-->
 <p align="justify"> <strong>Mapping</strong>: 
 
@@ -83,8 +83,8 @@ Outline:
 - RViz GUI<br>
 - (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
     (add) Map; Topic: /map <br>
-- Launch a cmd prog to move the robot around(SLAM): roslaunch turtlebot_teleop keyboard_teleop.launch<br>
-- Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f my_map --> map.pgm, map.yaml<br>
+- Launch a cmd prog to move the robot around(SLAM): roslaunch costa_cafe_navigation keyboard_control.launch<br>
+- Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f costa_cafe --> .pgm, .yaml<br>
 
 **Slam g_mapping Node** : 
 The gmapping Package provides laser based SLAM as slam_gmapping Node. This node,<br>
