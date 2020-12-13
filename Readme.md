@@ -78,7 +78,7 @@ _Objective_: Create mapping launches, and map the whole environment. You have to
 <p align="justify"> <strong>Mapping</strong>: 
 
 Outline:  
-- Launch slam_gmapping Node: roslaunch turtlebot_navigation_gazebo gmapping_demo.launch<br>
+- Launch slam_gmapping Node: roslaunch costa_cafe_navigation costa_gmapping.launch<br>
 - RViz : rosrun rviz rviz<br>
 - RViz GUI<br>
 - (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
@@ -114,7 +114,7 @@ Please click this link to download the full <a href="Resources/Videos/costa_mapp
 Outline:
 
 	RViz:
-		- roslaunch turtlebot3_navigation amcl_node.launch
+		- roslaunch t3_navigation start_localization.launch
 		- rosrun rviz rviz: - RobotModel
 							- Laser Scan
 							- Map 
@@ -124,7 +124,7 @@ Outline:
 
 		2D Pose Estimate Tool: Click on an estimated position and orientation of the robot.
 
-		roslaunch turtlebot3_keyboardcontrl.launch
+		roslaunch costa_cafe_navigation keyboard_control.launch
 
 AMCL Package:
 
