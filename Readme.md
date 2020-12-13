@@ -78,13 +78,23 @@ _Objective_: Create mapping launches, and map the whole environment. To setup th
 <p align="justify"> <strong>Mapping</strong>: 
 
 Outline:  
-- Launch slam_gmapping Node: roslaunch costa_cafe_navigation costa_gmapping.launch<br>
-- RViz : rosrun rviz rviz<br>
+- Launch slam_gmapping Node: 
+
+		roslaunch costa_cafe_navigation costa_gmapping.launch
+<br>
+- RViz : 
+
+		rosrun rviz rviz
+<br>
 - RViz GUI<br>
 - (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
     (add) Map; Topic: /map <br>
-- Launch a cmd prog to move the robot around(SLAM): roslaunch costa_cafe_navigation keyboard_control.launch<br>
-- Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f costa_cafe --> .pgm, .yaml<br>
+- Launch a cmd prog to move the robot around(SLAM): 
+
+		roslaunch costa_cafe_navigation keyboard_control.launch<br>
+- Save OGM map; 
+
+		cd ~/catkin_ws/src : rosrun map_server map_saver -f costa_cafe --> .pgm, .yaml<br>
 
 **Slam g_mapping Node** : 
 The gmapping Package provides laser based SLAM as slam_gmapping Node. This node,<br>
