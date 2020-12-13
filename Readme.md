@@ -105,7 +105,7 @@ To start publishing OGM: rosrun map_server map_server my_map.yaml</p>
 
 <p align="center">
 <img src="Resources/Videos/costa_mapping1.gif"/></p> <br>
-Please click this link to download the full <a href="Resources/Videos/costa_mapping1.mp4">video</a>
+Please click this link to download the full <a href="Resources/Videos/costa_mapping1.gif">video</a>
 
 <p align="justify"> <strong>Localizing</strong>:
   
