@@ -129,10 +129,10 @@ Outline:
 AMCL Package:
 
 Provides the amcl node(preconfigured). This node:<br>
-								Subscribe to:	/laser/scan<br>
+							--Subscribe to:	/laser/scan<br>
 										/map<br>
 										/tf<br>
-								Publish to:	/amcl_pose<br>
+							--Publish to:	/amcl_pose<br>
 										/particlecloud<br>
 
 		
@@ -140,6 +140,11 @@ Provides the amcl node(preconfigured). This node:<br>
 
 It is an algorithm used to solve the localization problem in robotics. It generates random possible poses of where the robot is. Depending on the reading of the laser it discards the guesses which are wrong and concentrtates more guesses in the right location. The more new data that is fed into the algorithm the more precise and accurate its prediction. Therefore, the more we move the robot around the map the better it gets at predicting its location. </p>
 <br>
+
+<p align="center">
+<img src="Resources/Videos/costa_mapping1.gif"/></p> <br>
+Please click this link to download the full <a href="Resources/Videos/costa_cafe_localize.gif">video</a>
+
 
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
 _Objective_: Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.<br>
