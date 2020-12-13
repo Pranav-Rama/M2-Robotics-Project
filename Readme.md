@@ -85,8 +85,9 @@ Outline:
 
 		rosrun rviz rviz
 - RViz GUI
-	- (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
-    				(add) Map; Topic: /map 
+	
+		(add) Laser_Scan; Topic: /kobuki/laser/scan 
+    		(add) Map; Topic: /map 
 - Launch a cmd prog to move the robot around(SLAM): 
 
 		roslaunch costa_cafe_navigation keyboard_control.launch<br>
