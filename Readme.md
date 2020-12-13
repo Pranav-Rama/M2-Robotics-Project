@@ -81,14 +81,12 @@ Outline:
 - Launch slam_gmapping Node: 
 
 		roslaunch costa_cafe_navigation costa_gmapping.launch
-<br>
 - RViz : 
 
 		rosrun rviz rviz
-<br>
-- RViz GUI<br>
-- (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
-    (add) Map; Topic: /map <br>
+- RViz GUI
+	- (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
+    				(add) Map; Topic: /map 
 - Launch a cmd prog to move the robot around(SLAM): 
 
 		roslaunch costa_cafe_navigation keyboard_control.launch<br>
