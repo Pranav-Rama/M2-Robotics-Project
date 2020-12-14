@@ -2,10 +2,10 @@
 <p align="center">
 University De Bourgogne<br> 
   <p align="center">
-<img src="Resources/Images/UB_logo.png" width=500</p><br>
+<img src="Resources/Images/UB_logo.png" width=150</p><br>
   (VIBOT)<br>
   <p align="center">
-      <img src = "Resources/Images/Vibot.png" width=300><br>
+      <img src = "Resources/Images/Vibot.png" width=150><br>
   </p>
 </p>
 
@@ -43,7 +43,7 @@ Students: <br>
 <p align="justify">Our project is about the navigation of the Turtlebot 3 model robot. As the introduction of Turtlebot 3 burger, it is a programmable robot which runs completely on ROS and Linux. The turtlebot 3 burger that we use has a feature of LiDAR sensor which is a need for doing the SLAM gmapping. This project  requires us to accomplish a few objective which is:</p> 
 
 - Create a script that moves the robot around with simple /cmd_vel publishing. See the range of movement of this new robot model.
-- Create mapping launches, and map the whole environment. You have to finish with a clean map of the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot.
+- Create mapping launches, and map the whole environment. To setup the launch file to be able to localize the Turtlebot3 robot.
 - Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.
 - Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. 
 
@@ -64,27 +64,36 @@ Procedure to publish:
      - i) rospy.init_node(‘node_name’) 
   - b) Assign topic and message type. 
      - i) rospy.Publisher(‘/cmd_vel’, Twist, queue_size=1) 
-- 2) Create a launch file for the <node> - 
+- 2) Create a launch file for the nod - 
     - a) make sure to use correct: 
       - i) pkg = package name 
       - ii) type = program type(python_program.py) 
       - iii) name = ‘node_name’ 
       - iv) output = ‘screen’ 
-- 3) roslaunch <package> <launch file> 
+- 3) roslaunch costa_cafe_navigation keyboard_control.launch
 
 ## How to create a mapping program launches to map the environment<br>
-_Objective_: Create mapping launches, and map the whole environment. You have to finish with a clean map of the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot.<br>
+_Objective_: Create mapping launches, and map the whole environment. To setup the launch file to be able to localize the Turtlebot3 robot.<br>
 <!--Put Your content-->
 <p align="justify"> <strong>Mapping</strong>: 
 
 Outline:  
---> Launch slam_gmapping Node: roslaunch turtlebot_navigation_gazebo gmapping_demo.launch<br>
---> RViz : rosrun rviz rviz<br>
---> RViz GUI<br>
---> (add) Laser_Scan; Topic: /kobuki/laser/scan <br>
-    (add) Map; Topic: /map <br>
---> Launch a cmd prog to move the robot arround(SLAM): roslaunch turtlebot_teleop keyboard_teleop.launch<br>
---> Save OGM map; cd ~/catkin_ws/src : rosrun map_server map_saver -f my_map --> map.pgm, map.yaml<br>
+- Launch slam_gmapping Node: 
+
+		roslaunch costa_cafe_navigation costa_gmapping.launch
+- RViz : 
+
+		rosrun rviz rviz
+- RViz GUI
+	
+		(add) Laser_Scan; Topic: /kobuki/laser/scan 
+    		(add) Map; Topic: /map 
+- Launch a cmd prog to move the robot around(SLAM): 
+
+		roslaunch costa_cafe_navigation keyboard_control.launch
+- Save OGM map; 
+
+		cd ~/catkin_ws/src : rosrun map_server map_saver -f costa_cafe --> .pgm, .yaml
 
 **Slam g_mapping Node** : 
 The gmapping Package provides laser based SLAM as slam_gmapping Node. This node,<br>
@@ -100,17 +109,57 @@ The gmapping Package provides laser based SLAM as slam_gmapping Node. This node,
 .yaml file: image, resolution, origin,negate, <br>
 .pgm file: Image file(can be rendered on GIMP)<br>
 
-These 2 files are what you will provide to other Nodes. Nodes can later subcribe to the static_map(nav_msgs/GetMap) Service.
+These 2 files are what you will provide to other Nodes. Nodes can later subscribe to the static_map(nav_msgs/GetMap) Service.
 To start publishing OGM: rosrun map_server map_server my_map.yaml</p> 
 
 <p align="center">
 <img src="Resources/Videos/costa_mapping1.gif"/></p> <br>
-Please click this link to download the full <a href="Resources/Videos/costa_mapping1.mp4">video</a>
+Please click this link to download the full <a href="Resources/Videos/costa_mapping1.gif">video</a>
+
+<p align="justify"> <strong>Localizing</strong>:
+  
+  <p align="justify"> Once the gmapping node has provided the OGM(.pgm & .yaml) file, now it is required to lacalize the robot. What this means is to tell the robot where it is in the OGM map that we have created. 
+
+Outline:
+
+	RViz:
+		- roslaunch t3_navigation start_localization.launch
+		- rosrun rviz rviz: - RobotModel
+							- Laser Scan
+							- Map 
+							- PoseArray /particlecloud
+
+	
+
+		2D Pose Estimate Tool: Click on an estimated position and orientation of the robot.
+
+		roslaunch costa_cafe_navigation keyboard_control.launch
+
+AMCL Package:
+
+Provides the amcl node(preconfigured). This node:<br>
+		
+	- Subscribe to:	/laser/scan<br>
+		/map<br>
+		/tf<br>
+	- Publish to:	/amcl_pose<br>
+		/particlecloud<br>
+
+		
+**Monte Carlo Localization:**
+
+It is an algorithm used to solve the localization problem in robotics. It generates random possible poses of where the robot is. Depending on the reading of the laser it discards the guesses which are wrong and concentrtates more guesses in the right location. The more new data that is fed into the algorithm the more precise and accurate its prediction. Therefore, the more we move the robot around the map the better it gets at predicting its location. </p>
+<br>
+
+<p align="center">
+<img src="Resources/Videos/costa.gif"/></p> <br>
+Please click this link to download the full <a href="Resources/Videos/costa.gif">video</a>
+
 
 ## How to set a move base system for creating a goal to move_base and implement the obstacles avoiding algorithm<br>
 _Objective_: Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles.<br>
 <!--Put Your content-->
-<p align="justify"> <strong>Task 1</strong> and <strong>Task 2</strong> is regarding creating mapping and subscribing to cmd_vel for moving the robot. In this <strong>task 3</strong>, we need to plan the path for the turtlebot to reach the specific goal without hitting an obstacle through the path that the turtlebot takes. To be able to do that, we will use a ros package which <strong>move_base</strong> package. <strong>Move_base</strong> is for moving the robot to a goal pose within a given reference frame. The <strong>move_base</strong> package are implementing the <strong>ROS action</strong> for reaching a given the goal that is published. This is involving the <strong>actionlib</strong> which a a package for interfacing with preemptable tasks. For example, <strong>actionlib</strong> can be used for moving the base to the target location, performing a laser scan, and returning the resulting point cloud, detecting the handle of a door, and many more. The <strong>move_base</strong> package is using the <strong>base_local_planner</strong> that will combine the odometry data with both global and local cost maps when planning the path for the robot to reach the goal. The path is computed before the robot starts moving toward the next goal and obstacles are being taken into consideration for avoiding.</p>
+<p align="justify"> <strong>Task 1</strong> and <strong>Task 2</strong> is regarding creating mapping and subscribing to cmd_vel for moving the robot. In this <strong>task 3</strong>, we need to plan the path for the turtlebot to reach the specific goal without hitting an obstacle through the path that the turtlebot takes. To be able to do that, we will use a ros package which <strong>move_base</strong> package. <strong>Move_base</strong> is for moving the robot to a goal pose within a given reference frame. The <strong>move_base</strong> package are implementing the <strong>ROS action</strong> for reaching a given the goal that is published. This is involving the <strong>actionlib</strong> which a package for interfacing with preemptable tasks. For example, <strong>actionlib</strong> can be used for moving the base to the target location, performing a laser scan, and returning the resulting point cloud, detecting the handle of a door, and many more. The <strong>move_base</strong> package is using the <strong>base_local_planner</strong> that will combine the odometry data with both global and local cost maps when planning the path for the robot to reach the goal. The path is computed before the robot starts moving toward the next goal and obstacles are being taken into consideration for avoiding.</p>
 <br>
 
 
@@ -192,7 +241,7 @@ After that use the 2D Pose Estimate in RViz for the pose initialization  of the 
 
 And in the terminal it will show this:
 
-    [INFO][140446249940736][/follow_waypoints/execute:189]: Recieved newwaypoint
+    [INFO][140446249940736][/follow_waypoints/execute:189]: Received newwaypoint
 
 Now, after the waypoint is set. We publish it to topic /path_ready to send the goal to the move_base.
 
@@ -208,8 +257,7 @@ Please click this link to download the full <a href="Resources/Videos/task3_vide
 
 
 ## How to create a navigation program with a set of waypoints using Rviz<br>
-_Objective_: Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the next page.<br>
-To launch the navigation file:   
+_Objective_: Create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. <br> 
 <br>
 _Execution_: The next task is to create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. Waypoints locations are presented on the below figures. 
 <p align="center">
@@ -280,7 +328,7 @@ Please click this link to download the full <a href="Resources/Videos/task4_vide
 
 
 ## Conclusion
-<p align="justify">As conclusions, here we are trying to explain from top to bottom on how to handle the turtlebot 3 model burger. We start with the Introduction of the turtlebot 3. Then we continue to explain in detail for the Project Implementation that is started with the creation of a script that moves the robot around with simple /cmd_vel publishing. See the range of movement of this new robot model. Next details on how to create the mapping launches, and map the whole environment. Then, set up the move base system so that it can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles. Lastly, create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. For now, the implementation of task 4 is successfully going and the next plan was to create an autonomous script to go to three of the waypoints. We believe the approach that we demonstrated above is able to be implemented for project development success. </p> <br>
+<p align="justify">As conclusions, here we are trying to explain from top to bottom on how to handle the turtlebot 3 model burger. We start with the Introduction of the turtlebot 3. Then we continue to explain in detail for the Project Implementation that is started with the creation of a script that moves the robot around with simple /cmd_vel publishing. See the range of movement of this new robot model. Next details on how to create the mapping launches, and map the whole environment. Then, set up the move base system so that it can publish a goal to move_base and Turtlebot3 can reach that goal without colliding with obstacles. Lastly, create a program that allows the Turtlebot3 to navigate within the environment following a set of waypoints. For now, the implementation of task 4 is successfully going and the next plan was to create an autonomous script to go to three of the waypoints. The approach that we demonstrated above is successfully being implemented and giving a great outputs. </p> <br>
 
 ## References
 * Amsters, Robin & Slaets, Peter. (2020). Turtlebot 3 as a Robotics Education Platform. 10.1007/978-3-030-26945-6_16.<br> 
